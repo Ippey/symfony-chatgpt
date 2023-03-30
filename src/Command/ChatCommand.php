@@ -6,7 +6,6 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -34,15 +33,15 @@ class ChatCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $question = $input->getArgument('question');
 
-        $response = $this->httpClient->request('POST','https://api.openai.com/v1/chat/completions', [
+        $response = $this->httpClient->request('POST', 'https://api.openai.com/v1/chat/completions', [
             'json' => [
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
-                    ['role' => 'user', 'content' => 'スプラトゥーン3ってなに？']
+                    ['role' => 'user', 'content' => $question],
                 ],
             ],
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->openAiApiKey,
+                'Authorization' => 'Bearer '.$this->openAiApiKey,
             ],
         ]);
         $json = json_decode($response->getContent());

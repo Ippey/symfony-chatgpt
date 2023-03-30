@@ -52,7 +52,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "cs-fix": "@php php-cs-fixer fix src",
+        "cs": "@php php-cs-fixer fix src --dry-run -vvv"
     },
     "conflict": {
         "symfony/symfony": "*"
