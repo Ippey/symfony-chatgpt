@@ -26,8 +26,13 @@ services:
     App\Command\ChatCommand:
         arguments:
             $openAiApiKey: '%env(OPEN_AI_API_KEY)%'
-    App\Command\IndexWeaponCommand:
+
+    App\Service\Pinecone\PineconeWeaponClient:
         arguments:
-            $openAiApiKey: '%env(OPEN_AI_API_KEY)%'
-            $pineconeEnvName: '%env(PINECONE_ENV_NAME)%'
-            $pineconeApiKey: '%env(PINECONE_API_KEY)%'
+            $apiKey: '%env(PINECONE_API_KEY)%'
+            $envName: '%env(PINECONE_ENV_NAME)%'
+            $projectName: '%env(PINECONE_PROJECT_NAME)%'
+            $projectId: '%env(PINECONE_PROJECT_ID)%'
+    App\Service\OpenAi\OpenAiClient:
+        arguments:
+            $apiKey: '%env(OPEN_AI_API_KEY)%'

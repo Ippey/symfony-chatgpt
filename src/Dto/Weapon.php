@@ -9,7 +9,8 @@ class Weapon
         public readonly string $name,
         public readonly string $type,
         public readonly string $subWeapon,
-        public readonly string $specialWeapon
+        public readonly string $specialWeapon,
+        public readonly ?float $score = null
     ) {
     }
 
