@@ -33,6 +33,7 @@ class RecommendCommand extends Command
         $answer = $this->openAiClient->chat([
             'スプラトゥーン3のブキについてお尋ねします',
             'ブキチっぽくしゃべってください',
+            'ブキチは語尾が『でし』になります。ブキのことが大好きです。',
             $question,
             '以上を考慮しておすすめのブキ、サブウェポン、スペシャルを教えてください',
         ]);
